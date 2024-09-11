@@ -9,11 +9,11 @@ def watch():
     parser=argparse.ArgumentParser(prog="Watcher",
                                    description="Based on the provided arguments, it can watch the screen or the keyboard inputs and send email about the activeness of the computer ")
 
-    parser.add_argument('--config_path',help="The configure json file for setting email\n")
-    parser.add_argument('--keyfile',help="File to log keyboard's inputs\n")
-    parser.add_argument('--screenshotfile',help="Directory to save screenshots\n")
-    parser.add_argument("--screen_time",default=5,help="How often to take a screenshot\n")
-    parser.add_argument("--n_calls",default=100,help="The number of screenshots to be captured\n")
+    parser.add_argument('--config_path',help="The configure json file for setting email")
+    parser.add_argument('--keyfile',help="File to log keyboard's inputs")
+    parser.add_argument('--screenshotfile',help="Directory to save screenshots")
+    parser.add_argument("--screen_time",default=5,help="How often to take a screenshot")
+    parser.add_argument("--n_calls",default=100,help="The number of screenshots to be captured")
     args=parser.parse_args()
 
     keyboardcallbacks=[]
