@@ -15,8 +15,4 @@ share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
-<<<<<<< HEAD
 __pycache__/
-=======
-__pycache__
->>>>>>> 99a8bc550d4760acbc4cf713c0335718539c3be6
