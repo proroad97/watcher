@@ -41,6 +41,8 @@ class Emailer(DecoratorMixin):
                  ) -> None:
         """
         config_path : The path of the json file that contains credentials and receiver/sender's emails
+                              It should provide the below keys: 'To','From',hostname','port','username','password.
+                              Check smtplib documentation for more on credentials need for an email connection.
         default_message: Will populate the 'message' section if not pass a messager
         """
         with open(config_path,'r') as f:
@@ -48,16 +50,18 @@ class Emailer(DecoratorMixin):
         self.email_message=EmailMessage()
         self.email_message["From"]=self.config.pop("From")
         self.email_message["To"]=self.config.pop("To")
-        if default_message:self.email_message.set_content(default_message)
+        self.default_message=default_message
 
     def call(self, message=None, **kwds):
         def send():        
             smtp=smtplib.SMTP(host=self.config["hostname"],port=self.config["port"])
             smtp.starttls()
             smtp.login(user=self.config["username"],password=self.config["password"])
-            if message:self.email_message.set_content(message)
+            if message:
+                self.email_message.set_content(message)
+            else:
+                self.email_message.set_content(self.default_message)
             smtp.send_message(self.email_message)
-            print("email sended")
         t=Thread(target=send,)
         t.start()
 

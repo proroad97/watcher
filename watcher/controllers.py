@@ -7,7 +7,7 @@ class Conversions(Enum):
     HOUR=60*60
     DAY=24*60*60
            
-def timer(restart_time,units="HOUR"):
+def timer(restart_time:float,units="HOUR"):
     """
     Returns the results of a function when a given time have passed from the last call,
     otherwise returns True ('False' as a result is not accepted from pynput, stops the Listeners)
@@ -24,7 +24,7 @@ def timer(restart_time,units="HOUR"):
         return wrapped
     return wrap_
 
-def calls(n_calls):
+def calls(n_calls:int):
     """
     Controlls the times you can call a function,
     if exceed the n_calls returns True ('False' as a result is not accepted from pynput, stops the Listeners)

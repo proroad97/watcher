@@ -1,9 +1,9 @@
 import argparse
 from sys import exit
 from pynput import mouse,keyboard
-from spy import controllers
-from spy.events import KeyBoardEvent,MouseEvent
-import spy.tasks as tasks
+from watcher import controllers
+from watcher.events import KeyBoardEvent,MouseEvent
+import watcher.tasks as tasks
 
 def main():
     parser=argparse.ArgumentParser()
