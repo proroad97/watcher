@@ -16,3 +16,4 @@ share/python-wheels/
 .installed.cfg
 *.egg
 __pycache__/
+*.py[cod]
