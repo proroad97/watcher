@@ -9,10 +9,10 @@ def watch():
     parser=argparse.ArgumentParser(prog="Watcher",
                                    description="Based on the provided arguments, it can watch the screen or the keyboard inputs and send email about the activeness of the computer ")
 
-    parser.add_argument('--config_path',help="The configure json file for setting email")
-    parser.add_argument('--keyfile',help="File to log keyboard's inputs")
-    parser.add_argument('--screenshotfile',help="Directory to save screenshots")
-    parser.add_argument("--screen_time",default=5,help="How often to take a screenshot")
+    parser.add_argument('-cp','--config_path',help="The configure json file for setting email")
+    parser.add_argument('-k','--keyfile',help="File to log keyboard's inputs")
+    parser.add_argument('-sf','--screenshotfile',help="Directory to save screenshots")
+    parser.add_argument('-sc',"--screen_time",default=5,help="How often to take a screenshot")
     parser.add_argument("--n_calls",default=100,help="The number of screenshots to be captured")
     args=parser.parse_args()
 
@@ -49,6 +49,6 @@ def watch():
         print("Not have enough informations for storing the secrets")
         exit(1)
 
-    print("Press Z for Termination:")
+    print("Enter Z for Termination:")
     while input()!="Z":continue
     if KeyCapturer:KeyCapturer.save()

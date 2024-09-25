@@ -13,7 +13,7 @@ class DecoratorMixin(ABC):
     """
     A class that provides the method for decorating the __call__ method of subclasses
 
-    It relies that subclasses will implement a 'call' method, so you must implement them 
+    It relies that subclasses will implement a 'call' method, so you must provide them 
     """
 
     @abstractmethod
@@ -43,7 +43,7 @@ class Emailer(DecoratorMixin):
         config_path : The path of the json file that contains credentials and receiver/sender's emails
                               It should provide the below keys: 'To','From',hostname','port','username','password.
                               Check smtplib documentation for more on credentials need for an email connection.
-        default_message: Will populate the 'message' section if not pass a messager
+        default_message: Will populate the 'message' section if not pass a message
         """
         with open(config_path,'r') as f:
             self.config=json.load(f)

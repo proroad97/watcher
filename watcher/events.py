@@ -6,7 +6,7 @@ class Callbacks:
 
     """
     def __init__(self,callbacks:list[Callable]):
-        self.callbacks=callbacks if isinstance(callbacks,Iterable) else [callbacks]            
+        self.callbacks=callbacks if isinstance(callbacks,Iterable) else set(callbacks)            
 
     def __call__(self, *args , **kwds ) :
         results=[]
@@ -24,7 +24,7 @@ class MouseEvent:
     """
 
     @classmethod
-    def on_move(cls,callbacks:list[Callable]):
+    def on_move(cls,callbacks:Iterable[Callable]):
         callback=Callbacks(callbacks)
         def _on_move(x,y):
             keywords={"x":x,"y":y}
@@ -32,7 +32,7 @@ class MouseEvent:
         return _on_move
 
     @classmethod
-    def on_scroll(cls,callbacks:list[Callable]):
+    def on_scroll(cls,callbacks:Iterable[Callable]):
         callback=Callbacks(callbacks)
         def _on_scroll(x,y,dx,dy):
             keywords={"x":x,"y":y,"dx":dx,"dy":dy}
@@ -40,7 +40,7 @@ class MouseEvent:
         return _on_scroll
         
     @classmethod
-    def on_click(cls,callbacks:list[Callable]):
+    def on_click(cls,callbacks:Iterable[Callable]):
         callback=Callbacks(callbacks)
         def _on_click(x, y, button, pressed):
             keywords={"x":x,"y":y,"button":button,"pressed":pressed}
