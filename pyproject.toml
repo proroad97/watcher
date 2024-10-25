@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name="watcher"
+version="1.0.0"
+description="A script to spy your PC"
+readme = "README.md"
+requires-python = ">=3.8"
+keywords = ["setuptools", "development"]
+authors = [
+  {name = "Prodromos Mouratidis", email = "prodromosm.97@gmail.com" }
+]
+classifiers = [
+    "Framework :: Pynput",
+    "Programming Language :: Python :: 3",
+]
+dependencies=["pynput","pyautogui"]
+
+[tool.setuptools]
+packages = ["watcher"]
+
+[project.scripts]
+watch = "watcher:watch"
